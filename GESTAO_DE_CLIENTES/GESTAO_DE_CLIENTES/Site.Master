@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GESTAO_DE_CLIENTES.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fácil Assist - Teste Prático</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="images/facil-assist-ico.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="/CSS/Master.css" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" style="border-radius: 0px">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../Pages/Clientes.aspx">
+                    <img src="../images/logo-facilassist.png" alt="Logo" width="120">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="https://github.com/navilez2/">GitHub</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">Gestão de Clientes
+                            </a>
+                            <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+                                <li>
+                                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Clientes.aspx" class="dropdown-item" onmouseover="this.style.color='black'" onmouseout="this.style.color='white'" Style="color: white">Cadastro de Cliente</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink runat="server" NavigateUrl="~/Pages/Situacao.aspx" class="dropdown-item" onmouseover="this.style.color='black'" onmouseout="this.style.color='white'" Style="color: white">Cadastro de Situação</asp:HyperLink>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="messageContainer" runat="server"></div>
+
+        <div class="body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="fixed-bottom bg-dark py-3" data-bs-theme="dark">
+                <div class="container text-center" style="color: white">
+                    <p>&copy; <%: DateTime.Now.Year %> - Developed by Nathan Albergoni Avilez</p>
+                </div>
+            </footer>
+        </div>
+
+    </form>
+    <script>
+
+        function validarNumeroDecimal(texbox, submit) {
+            var input = document.getElementById(texbox).value;
+            var Submit = document.getElementById(submit);
+            var regex = /^[0-9]+([,.][0-9]+)?$/;
+
+            if (!regex.test(input)) {
+                Submit.disabled = true;
+            }
+            else {
+                Submit.disabled = false;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

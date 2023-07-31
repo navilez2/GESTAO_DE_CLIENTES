@@ -1,0 +1,10 @@
+﻿.alert-fixed {
+    position: fixed;
+    z-index: 500;
+    width: 100%;
+}
+.icon {
+    height: 15px;
+    width: 15px;
+    object-fit: contain;
+}
